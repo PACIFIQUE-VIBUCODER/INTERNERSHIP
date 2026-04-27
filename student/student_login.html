@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: rgb(38, 53, 53);
+            min-height: 100vh;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap; /* Ibi bituma aside n'ifomu bishobora kujya munsi y'ikindi kuri telefone */
+            min-height: 100vh;
+        }
+
+        aside {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./calss.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contain {
+            width: 50%;
+            background-color: rgb(38, 53, 53);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: antiquewhite;
+            padding: 40px 20px;
+        }
+
+        .favour {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-size: 1.5rem;
+            max-width: 80%;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #bbbb10;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .explain {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgb(193, 170, 140);
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        input {
+            background-color: rgb(95, 95, 52);
+            color: white;
+            border: 2px solid transparent;
+            height: 50px;
+            width: 100%;
+            padding: 0 15px 0 45px; /* Space for the icon */
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #bbbb10;
+            background-color: rgb(110, 110, 60);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 40px; /* Ibi biterwa n'aho label iherereye */
+            color: #222;
+        }
+
+        .btnlog {
+            background-color: #bbbb10;
+            color: black;
+            font-weight: bold;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btnlog:hover {
+            background-color: #e6e600;
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.7;
+            text-align: center;
+        }
+
+        .back {
+            color: #bbbb10;
+            text-decoration: none;
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* --- IYI NIYO MEDIA QUERY ITUMA BIHINDUKA KURI TELEFONE --- */
+        @media (max-width: 768px) {
+            aside {
+                width: 100%;
+                height: 30vh; /* Igabanya uburebure bw'ifoto kuri telefone */
+            }
+
+            .contain {
+                width: 100%;
+                min-height: 70vh;
+            }
+
+            .favour {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <aside> 
+            <p class="favour">
+                Welcome Back! Please Enter Your Unique Student Credentials To
+                Access Your Academic Dashboard, Grades, and Resources.
+            </p>
+        </aside>
+
+        <div class="contain">
+            <h2>Student Portal Login</h2>
+            <p class="explain">Enter Your Credentials To Access The Portal.</p>
+
+            <form id="studentLoginForm">
+                <div class="input-group">
+                    <label>Full Name:</label>
+                    <input type="text" placeholder="Enter your name" required>
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div class="input-group">
+                    <label>Student Code / ID:</label>
+                    <input type="text" placeholder="Enter your code" required>
+                    <i class="fas fa-id-card"></i>
+                </div>
+
+                <div class="input-group">
+                    <label>Student Password:</label> 
+                    <input type="password" placeholder="Enter your password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <button type="submit" class="btnlog">LOGIN TO SYSTEM</button>
+                
+                <div class="footer-text">
+                    <p>Forget Code? Contact the Registrar.</p>
+                    <a href="../index.html" class="back">Back to Home</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Navuguruye ID kugira ngo ihure n'iyo muri form
+        const loginForm = document.getElementById('studentLoginForm');
+
+        if(loginForm) {
+            loginForm.addEventListener('submit', function(event) {
+                // Hano ushobora gushyiramo uburyo bwawe bwa validation
+                alert("Logging in...");
+            });
+        }
+    </script>
+</body>
+</html>
