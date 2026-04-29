@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>Student Platform</title>
+<link rel="icon" href="LOGO.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-    body {
-    }
+    
     html { 
         scroll-behavior: smooth; 
     }
@@ -303,7 +303,6 @@
         color: rgb(112, 111, 111);
     }
 
-    /* --- RESPONSIVE KURI LOGIN OPTIONS --- */
     .show-option, .show-option2 {
         display: none;
         background-color: black;
@@ -336,7 +335,6 @@
         font-size: 1.2rem;
     }
 
-    /* --- MEDIA QUERIES KURI MOBILE --- */
     @media (max-width: 768px) {
         .header {
             flex-direction: column;
@@ -365,7 +363,7 @@
 <section class="hold-all" id="all">
     <div class="header">
         <div class="logo">
-            <img src="../LOGO.png" alt="logo">
+            <img src="LOGO.png" alt="logo">
         </div>
         <div class="name">SMART STUDENT MANAGEMENT PLATFORM</div>
         <div class="nav-link">
@@ -536,14 +534,13 @@
         document.getElementById('all').style.display = 'none';    
     }
 
-    // Navigation logic
-    document.getElementById('students').onclick = function() { window.location.href = '../student/student_login.html'; };
-    document.getElementById('admin').onclick = function() { window.location.href = '../teacher/teacher_login.html'; };
-    document.getElementById('parents').onclick = function() { window.location.href = '../parent/parent_login.html'; };
+    document.getElementById('students').onclick = function() { window.location.href = 'student_login.html'; };
+    document.getElementById('admin').onclick = function() { window.location.href = 'teacher_login.html'; };
+    document.getElementById('parents').onclick = function() { window.location.href = 'parent_login.html'; };
 
-    document.getElementById('students_signup').onclick = function() { window.location.href = '../signup/student_signup.html'; };
-    document.getElementById('admin_signup').onclick = function() { window.location.href = '../signup/admin_signup.html'; };
-    document.getElementById('parents_signup').onclick = function() { window.location.href = '../signup/parent_signup.html'; };
+    document.getElementById('students_signup').onclick = function() { window.location.href = 'student_signup.html'; };
+    document.getElementById('admin_signup').onclick = function() { window.location.href = 'admin_signup.html'; };
+    document.getElementById('parents_signup').onclick = function() { window.location.href = 'parent_signup.html'; };
 </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PARENT_login portal</title>
-
+    <link rel="icon" href="LOGO.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         *{
@@ -14,201 +14,169 @@
         }
         body{
             background-image:url(./shelby-murphy-figueroa-Psv8aHU9HN0-unsplash.jpg) ;
-            background-size: contain;
+            background-size: cover;
             background-attachment: fixed;
-         background-repeat: no-repeat;
-         background-size: cover;
-         background-position: center;
-         z-index: -1;     
-         text-align: center;
-         justify-content: center;    
-         overflow: hidden;
-}
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            justify-content: center;    
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
         .contain{
             background-color: rgba(26, 0, 51, 0.915);
-            opacity: 1;
-           position: relative;
-          border-radius: 5vh;
-          box-shadow: 5px 5px 5px 10px solid rgb(0, 0, 0);
-          height: 100vh;
-}
-       aside{
-        background-color: #010a13;
-          height: 70vh;
-        width: 45%;
-        z-index: 5;
-clip-path: polygon(0 0, 100% 0, 150% 100%, 0 100%);  
-border: 5px solid rgb(0, 125, 125);
-filter: drop-shadow(0 0 15px rgb(14, 222, 222));
-color: azure;
-}
-     .info{
-        background:linear-gradient(45deg,#03303a,rgb(11, 53, 53),cyan) ;
-          height: 70vh;
-        width: 80vh;
-         z-index: 5;
-       clip-path: polygon(-0.1% 0%, 30% -150%,145% 100%, 100% 100%, 25% 100%);
-        margin-left: -18%;
-border: 5px solid #00B4D8;
-filter: drop-shadow(0 0 15px rgb(14, 222, 222));
- }
+            position: relative;
+            border-radius: 5vh;
+            box-shadow: 0 0 20px black;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        aside{
+            background-color: #010a13;
+            height: 70vh;
+            width: 45%;
+            z-index: 5;
+            clip-path: polygon(0 0, 100% 0, 150% 100%, 0 100%);  
+            border: 5px solid rgb(0, 125, 125);
+            filter: drop-shadow(0 0 15px rgb(14, 222, 222));
+            color: azure;
+        }
+        .info{
+            background:linear-gradient(45deg,#03303a,rgb(11, 53, 53),cyan) ;
+            height: 70vh;
+            width: 80vh;
+            z-index: 5;
+            clip-path: polygon(-0.1% 0%, 30% -150%,145% 100%, 100% 100%, 25% 100%);
+            margin-left: -18%;
+            border: 5px solid #00B4D8;
+            filter: drop-shadow(0 0 15px rgb(14, 222, 222));
+            padding-top: 2vh;
+        }
         .display{
-          width: 60%;
-height: 75%;
-         background-color: rgb(2, 49, 49);
-          display: flex;
-       margin-left: 30vh;
-       justify-content: center;
-       align-items: center;
-       display: flex;
-       margin-top: 10vh;
-       border-radius: 5vh;
-       animation: show 5s ;
-}
+            width: 85%; 
+            max-width: 120vh;
+            height: 75vh;
+            background-color: rgb(2, 49, 49);
+            display: flex;
+            margin: 10vh auto;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5vh;
+            filter: drop-shadow(0 0 10px rgb(108, 108, 56));
+        }
+        .hold{ margin-top: 20vh; }
+        input{
+            width: 40vh;
+            max-width: 80%; 
+            height: 5vh;
+            background-color: #1ab0cf;
+            outline: none;
+            border: none;
+            font-size: 2vh;
+            color: rgb(1, 57, 1);
+            padding: 0 10px;
+        }
+        i{ margin-left:-4vh ; color: #013901; }
+        button{
+            background-color: #00B4D8;
+            width: 30vh;
+            height: 8vh;
+            border-radius: 2vh;
+            font-family: 'Times New Roman', Times, serif;
+            border: 3px solid rgb(108, 105, 105);
+            filter: drop-shadow(0 0 1.5vh rgb(250, 87, 87));
+            font-size: 3vh;
+            cursor: pointer;
+        }
+        label{ color: wheat; display: block; margin-bottom: 5px; }
+        button:hover{ background-color:rgb(30, 210, 117); color: rgb(203, 8, 8); }
+        .welcome{ font-family: serif; animation: clip 10s infinite; }
+        @keyframes clip{
+            0%{transform: rotateY(0deg);}
+            50%{transform:rotateY(50deg)}
+            100%{transform: rotatey(0deg);}
+        }
+        .log{ color: rgb(255, 187, 2); }
+        .footer-text{ color: yellow; font-size: 14px; margin-top: 10px; }
 
-@keyframes show{
-    0%{transform: scale(0); opacity: 0;}
-    100%{transform: scale(1); opacity: 1;}
-}
-.hold{
-    margin-top: 20vh;
-}
-
-.display{
-    filter: drop-shadow(0 0 10px rgb(108, 108, 56));
-}
-input{
-    width: 40vh;
-height: 5vh;
-    background-color: #1ab0cf;
-    border-bottom: 2px solid black;
-    outline: none;
-    border: none;
-    font-size: 2.5vh;
-
-    color: rgb(1, 57, 1);
-}
-i{
-    margin-left:-5vh ;
-}
-button{
-    background-color: #00B4D8;
-    width: 30vh;
-    height: 8vh;
-    border-radius: 2vh;
-    font-family: 'Times New Roman', Times, serif;
-    border: 3px solid rgb(108, 105, 105);
-    filter: drop-shadow(0 0 2vh rgb(250, 87, 87));
-    font-size: 3vh;
-}
-
-.forpush{
-    margin-left: 5vh;
-}
-
-.input1{
-    margin-left: 5vh;
-}
-label{
-    color: wheat;
-}
-button:hover{
-    background-color:rgb(30, 210, 117);
-    color: rgb(203, 8, 8);
-
-}
-input::placeholder{
-    color: black;
-}
-.welcome{
-
-    font-family: serif;
-    animation: clip 10s  infinite;
-}
-@keyframes clip{
-    0%{transform: rotateY(0deg);}
-    50%{transform:rotateY(50deg)}
-    100%{transform: rotatey(0deg);}
-}
-.log{
-    animation: transparent 10s;
-    color: rgb(255, 187, 2);
-}
-@keyframes transparent{
-    0%{opacity: 0;}
-    100%{opacity: 1;}
-}
-input:hover{
-    border: 1vh solid black;
-}
-.footer-text{
-    color: yellow;
-}
-.footer-text:hover{
-    color: khaki;
-}
+        @media (max-width: 900px) {
+            .display { flex-direction: column; height: auto; width: 95%; margin: 5vh auto; padding-bottom: 30px; }
+            aside { width: 100%; height: auto; padding: 40px 20px; clip-path: none; border-radius: 5vh 5vh 0 0; }
+            .info { width: 100%; height: auto; margin-left: 0; clip-path: none; padding: 30px 10px; border-radius: 0 0 5vh 5vh; }
+            .hold { margin-top: 0; }
+            input { width: 80%; margin-bottom: 10px; }
+            i { display: none; }
+        }
+        .hom{
+            color: #e5e5e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hom:hover{
+            color: #37ff00;
+            text-decoration: none;
+        }
+        .back{
+            text-decoration: none;
+            color: #08d0f3;
+            font-weight: bold;
+        }
+        .back:hover{
+            color: #ff0000;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     
 <section>
-
-<form>
-    
     <div class="contain">
-        <br><br>
-
         <div class="display">
-<aside>
-    <p class="hold">
-    <h3 class="welcome">WELCOME <br> BACK!</h3>
-        <p>we hope you and your family
-            
-            <br>have a nice day
-        </p>
-</p>
-</aside>
+            <aside>
+                <div class="hold">
+                    <h3 class="welcome">WELCOME <br> BACK!</h3>
+                    <p>we hope you and your family <br>have a nice day</p>
+                </div>
+            </aside>
 
-<div class="info" >
-    <h3 class="log">PARENT LOGIN PORTAL</h3>
-    <br>
-    <p>fill this field then continue to access other resource</p>
+            <div class="info">
+                <h3 class="log">PARENT LOGIN PORTAL</h3>
+                <br>
+                <p style="color:white">Fill this field to access resources</p>
+                <br>
 
-            <br><br>
+                <label>Parent/Guardian Name:</label>
+                <input type="text" placeholder="Enter your name">
+                <i class="fas fa-user"></i>
+                <br><br>      
 
-    <label>Parent/Guardian name :</label>
-        <br>
+                <label>Parent Phone:</label>
+                <div>
+                    <input type="text" placeholder="Enter your phone">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <br> 
 
-    <input type="text" placeholder="enter your name" class="input1">
-    <i class="fas fa-user"></i>
-        <br><br>      
-
-
-    <label>Parent Phone:</label>
-    <p class="forpush">
-    <input type="text" placeholder="enter your phone number">
-    <i class="fas fa-phone"></i>
-    </p>
-        <br><br> 
-
-
-    <label>Password :</label>
-
-    <p class="forpush">
-    <input type="text" placeholder="enter your password">
-    
-    <i class="fas fa-lock"></i>
-    </p>
-<br><br>
-    <button>SIGN IN</button>
-    <br><br>
-    <p class="footer-text">forgot password? i don't have an account</p>
-</div>
-</div>
-</div>
-</form>
-
+                <label>Password:</label>
+                <div>
+                    <input type="password" placeholder="Enter password">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <br>
+                <button type="button" onclick="goToDashboard()">SIGN IN</button>
+                <br>
+                <p class="footer-text">Forgot password? <a href="parent_signup.html" class="hom">Create an account</a></p>
+                <p><a href="index.html" class="back">Back to Home</a></p>
+            </div>
+        </div>
+    </div>
 </section>
+
+<script>
+    function goToDashboard() {
+        window.location.href = 'parent_darshboard.html';
+    }
+</script>
 
 </body>
 </html>

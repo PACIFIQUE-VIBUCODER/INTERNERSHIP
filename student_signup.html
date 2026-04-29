@@ -4,28 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Portal - Sign Up</title>
+        <link rel="icon" href="LOGO.png">
     <style>
-        /* --- CSS STYLES --- */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
             display: flex;
-            background-color: #2c3e3e; /* Byihuta mu gihe ifoto itaraza */
+            background-color: #2c3e3e; 
         }
 
         .main-wrapper {
             display: flex;
             width: 100%;
-            flex-direction: row; /* Bisanzwe bimeze gutya kuri PC */
+            flex-direction: row; 
         }
 
-        /* Igice cy'ibumoso kirimo ifoto */
         .left-side {
             flex: 1;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1523050853063-bd388f9c7d13?auto=format&fit=crop&w=1000');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0, 0, 0, 0.4));
             background-size: cover;
             background-position: center;
             display: flex;
@@ -42,7 +40,6 @@
             text-align: center;
         }
 
-        /* Igice cy'iburyo (Form) */
         .right-side {
             flex: 1;
             background-color: #2c3e3e;
@@ -146,25 +143,21 @@
             text-decoration: underline;
         }
 
-        /* --- MEDIA QUERIES --- */
-        /* Ibi bituma kuri telefone ibice bimanuka */
         @media (max-width: 850px) {
             body {
-                display: block; /* Ineza kuri Mobile */
-            }
+                 display: block; }
             .main-wrapper {
-                flex-direction: column;
-            }
-            .left-side {
+                 flex-direction: column; }
+            .left-side { 
                 padding: 60px 20px;
-                min-height: 30vh;
-            }
+         min-height: 30vh;
+     }
             .left-side h1 {
-                font-size: 1.8rem;
-            }
-            .right-side {
+                 font-size: 1.8rem;
+         }
+            .right-side { 
                 padding: 40px 20px;
-            }
+     }
         }
     </style>
 </head>
@@ -214,7 +207,7 @@
                     </div>
 
                     <button type="submit" class="signup-btn">SIGN UP</button>
-                    <a href="../index.html" class="back-link">Back to Home</a>
+                    <a href="index.html" class="back-link">Back to Home</a>
                 </form>
             </div>
         </div>
@@ -224,23 +217,19 @@
         const form = document.getElementById('regForm');
         
         form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
             const inputs = form.querySelectorAll('input');
             const fullName = inputs[0].value;
             const studentID = inputs[1].value;
             const password = inputs[2].value;
             const confirmPassword = inputs[3].value;
 
-            if (fullName === "" || studentID === "" || password === "" || confirmPassword === "") {
-                event.preventDefault();
-                alert("All fields are required!");
-                return;
-            }
-
             if (password !== confirmPassword) {
-                event.preventDefault(); 
                 alert("Your passwords don't match!");
             } else {
                 alert("Registration successful for " + fullName);
+                window.location.href = 'student_darshboards.html';
             }
         });
     </script>

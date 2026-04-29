@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Page</title>
+    <link rel="icon" href="LOGO.png">
     <style>
         body {
             background-color: #002200; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Bishyira ifomu hagati neza */
+            justify-content: center; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh; /* Bituma iguma hagati mu burebure bwose */
+            min-height: 100vh; 
             margin: 0;
             padding: 20px;
         }
@@ -21,8 +22,8 @@
             background-color: #b1b1b1;
             padding: 30px;
             border-radius: 25px;
-            width: 100%; /* Ifata ubugari bwose ihari */
-            max-width: 500px; /* Ariko ntirenze 500px kuri mudasobwa */
+            width: 100%; 
+            max-width: 500px;
             box-shadow: 15px 15px 30px rgba(0,0,0,0.7);
             border: 2px solid rgba(255, 255, 255, 0.5);
             display: flex;
@@ -37,14 +38,14 @@
 
         label {
             display: block;
-            font-size: 1.2rem; /* Akoresha rem kugira ngo bibe responsive */
+            font-size: 1.2rem; 
             font-weight: bold;
             margin-bottom: 8px;
             color: #111;
         }
 
         input {
-            width: 100%; /* Ifata umwanya wose w'ifomu */
+            width: 100%; 
             padding: 12px;
             border-radius: 8px;
             border: 1px solid #777;
@@ -53,11 +54,10 @@
         }
 
         button {
-            width: 100%; /* Kuri telefone akenshi buto nini niyo nziza */
+            width: 100%; 
             max-width: 180px; 
             height: 55px;
-            align-self: center; /* Ishyira buto hagati */
-            margin-top: 10px;
+            align-self: center; 
             border-radius: 15px;
             background-color: black;
             color: darkkhaki;
@@ -83,7 +83,6 @@
             font-weight: bold;
         }
 
-        /* --- Media Query kuri telefone ntoya --- */
         @media (max-width: 400px) {
             .main-container {
                 padding: 20px;
@@ -118,9 +117,9 @@
                 <input type="password" placeholder="Confirm your Password" required>
             </div>
 
-            <button type="submit">Sign Up</button>
+            <button onclick="goToDashboard()">Sign Up</button>
             
-            <a href="../index.html" class="back" style="color: rgb(61, 88, 112);">Back to Home</a>
+            <a href="index.html" class="back" style="color: rgb(61, 88, 112);">Back to Home</a>
         </form>
     </div>
 
@@ -146,6 +145,11 @@
                 alert("Sign up was successful for " + parentName);
             }
         });
+      
+    function goToDashboard() {
+        window.location.href = 'parent_darshboard.html';
+    }
+
     </script>
 
 </body>

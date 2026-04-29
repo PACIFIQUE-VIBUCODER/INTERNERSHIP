@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Monitoring System - INTEL</title>
+    <link rel="icon" href="LOGO.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * { 
+            margin: 0;
+             padding: 0;
+              box-sizing: border-box; 
+              font-family: 'Segoe UI', sans-serif;
+ }
+        
+        body {
+            
+             background-color: #f4f7f6; 
+    }
+
+        .hold {
+             display: flex;
+              width: 100%; 
+              height: 100vh;
+               overflow: hidden;
+ }
+
+        aside { 
+            width: 20%; 
+            height: 100vh; 
+            background-color: rgb(106, 61, 2); 
+            color: white; 
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        aside h2 { 
+            
+            text-align: center;
+             margin-bottom: 30px;
+              font-size: 1.5rem;
+              
+              letter-spacing: 2px; 
+    }
+
+        .nav {
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            color: darkkhaki;
+            font-weight: 500;
+        }
+
+        .nav i { 
+            margin-right: 15px; 
+            width: 20px;
+             text-align: center; 
+    }
+
+        .nav:hover, .nav.active { 
+            background-color: darkgoldenrod;
+             color: black;
+     }
+
+        .go-out {
+            margin: auto 20px 30px 20px;
+            padding: 12px;
+            background: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: calc(100% - 40px); 
+        }
+        .go-out:hover { 
+            background-color: #471706;
+            color: white; 
+        }
+
+        hr {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .display {
+             width: 80%; 
+             padding: 30px;
+              overflow-y: auto;
+              
+               background-color: rgb(175, 190, 178);
+     }
+
+        .section-content {
+             display: none;
+              animation: fadeIn 0.4s ease;
+}
+        .section-content.active {
+             display: block; 
+    }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); }
+             to { opacity: 1; transform: translateY(0); } }
+
+        h1 { 
+            margin-bottom: 25px;
+             color: #333;
+              border-left: 6px solid rgb(106, 61, 2);
+               padding-left: 15px;
+     }
+
+        .stats-grid {
+             display: grid; 
+             grid-template-columns: repeat(4, 1fr);
+              gap: 15px;
+              margin-bottom: 30px;
+     }
+        
+        .card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            text-align: center; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-bottom: 5px solid darkgoldenrod;
+        }
+
+        .card h3 { 
+            font-size: 0.9rem;
+             color: #666;
+              margin-bottom: 8px;
+     }
+        .card .num {
+             font-size: 1.5rem; 
+             font-weight: bold;
+              color: rgb(106, 61, 2);
+     }
+
+        .data-display { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        table {
+            
+             width: 100%;
+              border-collapse: collapse;
+               margin-top: 15px;
+                min-width: 400px;
+     }
+        th, td { 
+            padding: 12px;
+             text-align: left; 
+             border-bottom: 1px solid #eee;
+     }
+        th {
+             background: #f8f9fa;
+             color: #333; 
+    }
+
+        .status-present {
+             color: #2e7d32;
+              font-weight: bold; 
+    }
+        .status-absent {
+             color: #d32f2f;
+              font-weight: bold;
+     }
+
+        .fee-card {
+            background: #fff;
+            border-left: 10px solid #2e7d32;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; 
+        }
+        #i{
+            color:black;
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 1024px) {
+            aside { width: 25%; }
+            .display { width: 75%; }
+            .stats-grid {
+                 grid-template-columns: repeat(2, 1fr);
+     }
+        }
+
+        @media (max-width: 768px) {
+            .hold { 
+                flex-direction: column;
+                 height: auto;
+                  overflow: visible;
+     }
+            aside {
+                 width: 100%;
+                  height: auto; 
+        }
+            .display { 
+                width: 100%; 
+                padding: 20px;
+         }
+            .stats-grid {
+                 grid-template-columns: repeat(2, 1fr);
+     }
+            aside h2 {
+                 margin-bottom: 15px; }
+            hr, br {
+                 display: none; 
+        } 
+            .go-out { 
+                margin: 10px 20px;
+                 width: calc(100% - 40px);
+     }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid { 
+                grid-template-columns: 1fr; 
+    }
+            h1 {
+                 font-size: 1.2rem; 
+    }
+            .card .num {
+                 font-size: 1.2rem;
+     }
+            .fee-card h2 {
+                 width: 100%; 
+                 margin-top: 10px;
+                  font-size: 1.2rem; 
+    }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hold">
+        <aside>
+            <h2>PARENT PORTAL</h2>
+            <div class="nav active" onclick="navTo('p-dash', this)"><i class="fas fa-child"></i> Child Overview</div>
+            <div class="nav" onclick="navTo('p-marks', this)"><i class="fas fa-chart-line"></i> Academic Progress</div>
+            <div class="nav" onclick="navTo('p-attn', this)"><i class="fas fa-calendar-check"></i> Attendance</div>
+            <div class="nav" onclick="navTo('p-fees', this)"><i class="fas fa-file-invoice-dollar"></i> School Fees</div>
+            <br><br><br><hr><br><br><br>
+            <p>
+                <a href="index.html" style="text-decoration: none;">
+                    <button class="go-out" onclick="return confirm('Are you sure you want to logout?')">
+                        LOG OUT <i id="i" class="fas fa-sign-out-alt"></i>
+                    </button>
+                </a>
+            </p>
+        </aside>
+
+        <div class="display">
+            
+            <div id="p-dash" class="section-content active">
+                <h1>Student: <span id="child-name">AKEZA</span></h1>
+                <div class="stats-grid">
+                    <div class="card"><h3>Term Average</h3><div class="num">82.5%</div></div>
+                    <div class="card"><h3>Attendance</h3><div class="num">95%</div></div>
+                    <div class="card"><h3>Rank</h3><div class="num">04/45</div></div>
+                    <div class="card"><h3>Fee Status</h3><div class="num" style="color: #2e7d32;">Paid</div></div>
+                </div>
+
+                <div class="data-display">
+                    <h3><i class="fas fa-bell"></i> Latest Teacher Remarks</h3>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <tr><th>Date</th><th>Subject</th><th>Remark</th></tr>
+                            <tr><td>2026-04-25</td><td>Mathematics</td><td>Shows great improvement in Algebra.</td></tr>
+                            <tr><td>2026-04-20</td><td>English</td><td>Participation in class is excellent.</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="p-marks" class="section-content">
+                <h1>Academic Report Card</h1>
+                <div class="data-display">
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr><th>Subject</th><th>C.A /40</th><th>Exam /60</th><th>Total /100</th><th>Grade</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Mathematics</td><td>35</td><td>52</td><td>87</td><td>A</td></tr>
+                                <tr><td>Physics</td><td>30</td><td>45</td><td>75</td><td>B</td></tr>
+                                <tr><td>Computer Science</td><td>38</td><td>55</td><td>93</td><td>A+</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="p-attn" class="section-content">
+                <h1>Attendance History</h1>
+                <div class="data-display">
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr><th>Date</th><th>Period</th><th>Status</th><th>Note</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>2026-04-28</td><td>Morning</td><td class="status-present">Present</td><td>-</td></tr>
+                                <tr><td>2026-04-27</td><td>Morning</td><td class="status-present">Present</td><td>-</td></tr>
+                                <tr><td>2026-04-26</td><td>Morning</td><td class="status-absent">Absent</td><td>Sick Leave</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="p-fees" class="section-content">
+                <h1>Financial Statement</h1>
+                <div class="fee-card">
+                    <div>
+                        <h3>Tuition Fees - Term 1</h3>
+                        <p>Status: <strong style="color: #2e7d32;">Fully Paid</strong></p>
+                    </div>
+                    <h2>350,000 RWF</h2>
+                </div>
+                <div class="fee-card" style="border-left-color: darkgoldenrod;">
+                    <div>
+                        <h3>School Bus Service</h3>
+                        <p>Status: <strong>Pending</strong></p>
+                    </div>
+                    <h2>45,000 RWF</h2>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function navTo(id, el) {
+            document.querySelectorAll('.section-content').forEach(v => v.classList.remove('active'));
+            document.querySelectorAll('.nav').forEach(n => n.classList.remove('active'));
+            
+            document.getElementById(id).classList.add('active');
+            el.classList.add('active');
+
+            if(window.innerWidth <= 768) {
+                document.querySelector('.display').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        window.onload = function() {
+            const studentName = localStorage.getItem('loggedInUser'); 
+            if(studentName) {
+                document.getElementById('child-name').innerText = studentName;
+            }
+        }
+    </script>
+</body>
+</html>

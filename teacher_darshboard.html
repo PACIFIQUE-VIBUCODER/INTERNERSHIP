@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Pro-working-area-System</title>
+        <link rel="icon" href="LOGO.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        *{
+         margin: 0; padding: 0; 
+         box-sizing: border-box; 
+        }
+
+        body { 
+        background-color: rgb(175, 190, 178); 
+        }
+
+        .hold{
+             display: flex;
+             overflow-x: hidden; 
+        }
+        
+        aside {
+            width: 20%;
+            height: 100vh; 
+            background-color: rgb(106, 61, 2);
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+            color: white;
+        }
+        h2{
+             padding: 20px;
+             text-align: center;
+        }
+        .display {
+             width: 80%;
+             padding: 30px;
+             min-height: 100vh;
+        }
+        
+        .nav{
+            cursor: pointer; 
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            color: darkkhaki;
+            font-size: 2vh; 
+            width: 90%;
+            margin: 5px auto;
+            border-radius: 10px;
+        }
+        .nav:hover {
+             background-color: darkgoldenrod;
+             color: black;
+        }
+        i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+             display: grid;
+             grid-template-columns: repeat(5, 1fr);
+             gap: 12px;
+             margin-bottom: 25px; 
+        }
+        .card {
+             background: white;
+             padding: 15px;
+             border-radius: 12px; 
+             text-align: center;
+             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+             border-bottom: 5px solid darkgoldenrod;
+        }
+        .card h3 {
+             font-size: 0.85rem; 
+             color: #666;
+             margin-bottom: 10px;
+        }
+        .card .num {
+             font-size: 1.6rem;
+             font-weight: bold; 
+             color: rgb(106, 61, 2);
+        }
+
+        .data-display { 
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow-x: auto; 
+        }
+        h1 { margin-bottom: 20px;
+             color: #333; 
+             border-left: 5px solid rgb(106, 61, 2);
+             padding-left: 15px; 
+        }
+        
+        table { 
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px; 
+        }
+        th, td {
+             padding: 12px;
+             text-align: left;
+             border-bottom: 1px solid #eee; 
+             font-size: 0.9rem; 
+        }
+        th { background: #f8f9fa;
+             color: #333;
+             font-weight: 600; 
+        }
+        
+        .btn-add { 
+            padding: 10px 20px; 
+            background: rgb(106, 61, 2);
+            color: white;
+            border: none; 
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-weight: bold; 
+        }
+        .go-out{
+            padding: 12px;
+            background: #2e7d32;
+            color: white; 
+            border: none;
+            border-radius: 6px; 
+            margin-left: 2.5vh;
+            cursor: pointer; 
+            font-weight: bold;
+            width: 80%;
+            height: 8vh;
+        }
+        .btn-del {
+             color: #d32f2f;
+             background: none;
+             border: none; 
+             cursor: pointer;
+             font-size: 1.1rem; 
+             margin-left: 10px; 
+        }
+        .btn-edit {
+             color: #1976d2;
+             background: none; 
+             border: none;
+             cursor: pointer;
+             font-size: 1.1rem; 
+        }
+        
+        input, select, textarea {
+             width: 100%;
+             padding: 10px;
+             border: 1px solid #ddd;
+             border-radius: 5px;
+             margin-bottom: 10px;
+             outline: none;
+        }
+        .content-view {
+             display: none;
+             animation: fadeIn 0.3s ease-in-out;
+        }
+        .active { 
+            display: block;
+        }
+        @keyframes fadeIn { 
+            0%{ opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); } 
+        }
+        hr{
+            margin-left: 2vh;
+            width: 80%; 
+        }
+        .post{
+            padding: 12px;
+            background: #2e7d32;
+            color: white; 
+            border: none;
+            border-radius: 6px; 
+            margin-left: 2.5vh;
+            cursor: pointer; 
+            font-weight: bold;
+            width: 80%;
+            height: 8vh;
+        }
+        #i{
+            color:black;
+            margin-left: 10px;
+            font-size: 3vh;
+        }
+
+        @media (max-width: 900px) {
+            .hold {
+                 flex-direction: column; 
+        }
+            aside { width: 100%; 
+                height: auto; 
+                position: relative;
+     }
+            .display { 
+                width: 100%;
+                 padding: 15px;
+             }
+            .stats-grid {
+                 grid-template-columns: repeat(2, 1fr);
+         }
+            hr {
+                 width: 90%;
+                  margin: 10px auto;
+         }
+            .go-out, .post {
+                 margin: 10px auto;
+                  display: block; 
+        }
+          
+        }
+        @media (max-width: 500px) {
+            .stats-grid {
+                 grid-template-columns: 1fr;
+         }
+            .nav {
+                 font-size: 14px; 
+            padding: 10px;
+     }
+            h2 { 
+            font-size: 1.2rem;
+     }
+        }
+
+    </style>
+</head>
+<body>
+
+<section class="hold">
+    <aside>
+        <h2>TEACHER PRO</h2>
+
+        <div class="nav " onclick="navTo('dash', this)">
+            <i class="fas fa-home"></i> Dashboard
+        </div>
+
+        <div class="nav" onclick="navTo('attn', this)">
+            <i class="fas fa-user-check"></i> Attendance
+        </div>
+
+        <div class="nav" onclick="navTo('marks', this)">
+            <i class="fas fa-graduation-cap"></i> Student Marks</div>
+        <div class="nav" onclick="navTo('ttable', this)">
+            <i class="fas fa-calendar-alt"></i> Timetable</div>
+        <div class="nav" onclick="navTo('announcement', this)">
+            <i class="fas fa-bullhorn"></i> Announcements</div>
+        <div class="nav" onclick="navTo('profiles', this)">
+            <i class="fas fa-users"></i> Profiles</div>
+            <br><hr><br>
+          <p>
+  <a href="index.html" class="back">
+    <button class="go-out" onclick="return confirm('Are you sure you want to logout?')">
+      LOG OUT <i id="i" class="fas fa-sign-out-alt"></i>
+    </button>
+  </a>
+</p>
+    </aside>
+
+    <div class="display">
+        <div id="dash" class="content-view active">
+            <h1>General Overview</h1>
+            <div class="stats-grid">
+                <div class="card"><h3>Total Students</h3><div class="num" id="d-total">0</div></div>
+                <div class="card"><h3>Present</h3><div class="num" id="d-present" style="color: #2e7d32;">0</div></div>
+                <div class="card" style="border-bottom-color: #d32f2f;"><h3>Absent</h3><div class="num" id="d-absent" style="color: #d32f2f;">0</div></div>
+                <div class="card"><h3>Avg Grade</h3><div class="num" id="d-avg">0%</div></div>
+                <div class="card"><h3>Modules</h3><div class="num" id="d-mod">0</div></div>
+            </div>
+            <div class="data-display">
+                <h3><i class="fas fa-history"></i> Recent Activity Log</h3>
+                <table>
+                    <thead><tr><th>Module</th><th>Summary</th><th>Last Date Action</th></tr></thead>
+                    <tbody id="log-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="attn" class="content-view">
+            <h1>Daily Attendance Control</h1>
+            <div class="data-display">
+                <div id="attn-inputs" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto; gap: 10px;">
+                    <input type="text" id="at-name" placeholder="Student Name">
+                    <select id="at-gen"><option value="Boy">Boy</option><option value="Girl">Girl</option></select>
+                    <select id="at-status"><option value="Present">Present</option><option value="Absent">Absent</option></select>
+                    <input type="date" id="at-date">
+                    <button class="btn-add" id="btn-attn" onclick="saveAttendance()">Add</button>
+                </div>
+                <table>
+                    <thead><tr><th>Name</th><th>Gender</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+                    <tbody id="attn-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="marks" class="content-view">
+            <h1>Academic Records (Marks)</h1>
+            <div class="data-display">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px;">
+                    <input type="text" id="mk-sub" placeholder="Subject">
+                    <input type="text" id="mk-name" placeholder="Student Name">
+                    <input type="number" id="mk-val" placeholder="Marks/100">
+                    <button class="btn-add" id="btn-mark" onclick="saveMark()">Save</button>
+                </div>
+                <table>
+                    <thead><tr><th>Subject</th><th>Student</th><th>Marks</th><th>Status</th><th>Action</th></tr></thead>
+                    <tbody id="marks-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="ttable" class="content-view">
+            <h1>Class Timetable</h1>
+            <div class="data-display">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px;">
+                    <input type="text" id="tt-day" placeholder="Day">
+                    <input type="text" id="tt-time" placeholder="Time">
+                    <input type="text" id="tt-sub" placeholder="Subject">
+                    <button class="btn-add" id="btn-tt" onclick="saveTT()">Add</button>
+                </div>
+                <table>
+                    <thead><tr><th>Day</th><th>Time</th><th>Subject</th><th>Action</th></tr></thead>
+                    <tbody id="tt-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="announcement" class="content-view">
+            <h1>Announcements Manager</h1>
+            <div class="data-display">
+                <input type="text" id="an-title" placeholder="Title">
+                <textarea id="an-msg" placeholder="Message content..."></textarea>
+                <button class="post" onclick="addAnn()">POST ANNOUNCEMENT</button>
+                <div id="ann-list" style="margin-top: 20px;"></div>
+            </div>
+        </div>
+
+        <div id="profiles" class="content-view">
+            <h1>Student Profiles</h1>
+            <div class="data-display" id="profile-container"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    let db = {
+        attendance: JSON.parse(localStorage.getItem('tp_attn')) || [],
+        marks: JSON.parse(localStorage.getItem('tp_marks')) || [],
+        timetable: JSON.parse(localStorage.getItem('tp_tt')) || [],
+        announcements: JSON.parse(localStorage.getItem('tp_ann')) || []
+    };
+
+    let editIds = { attendance: null, marks: null, timetable: null };
+
+    document.getElementById('at-date').valueAsDate = new Date();
+
+    function saveDB() {
+        localStorage.setItem('tp_attn', JSON.stringify(db.attendance));
+        localStorage.setItem('tp_marks', JSON.stringify(db.marks));
+        localStorage.setItem('tp_tt', JSON.stringify(db.timetable));
+        localStorage.setItem('tp_ann', JSON.stringify(db.announcements));
+        refreshUI();
+    }
+
+    function navTo(id, el) {
+        document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('.nav').forEach(n => n.classList.remove('active-nav'));
+        document.getElementById(id).classList.add('active');
+        if(el) el.classList.add('active-nav');
+    }
+
+    function saveAttendance() {
+        const name = document.getElementById('at-name').value;
+        const gen = document.getElementById('at-gen').value;
+        const status = document.getElementById('at-status').value;
+        const date = document.getElementById('at-date').value;
+        if(!name || !date) return alert("Please enter name and date");
+
+        if(editIds.attendance) {
+            let idx = db.attendance.findIndex(i => i.id === editIds.attendance);
+            db.attendance[idx] = { id: editIds.attendance, name, gen, status, date };
+            editIds.attendance = null;
+            document.getElementById('btn-attn').innerText = "Add";
+        } else {
+            db.attendance.push({ id: Date.now(), name, gen, status, date });
+        }
+        document.getElementById('at-name').value = '';
+        saveDB();
+    }
+
+    function editAttendance(id) {
+        let item = db.attendance.find(i => i.id === id);
+        document.getElementById('at-name').value = item.name;
+        document.getElementById('at-gen').value = item.gen;
+        document.getElementById('at-status').value = item.status;
+        document.getElementById('at-date').value = item.date;
+        editIds.attendance = id;
+        document.getElementById('btn-attn').innerText = "Update";
+    }
+
+    function saveMark() {
+        const sub = document.getElementById('mk-sub').value;
+        const name = document.getElementById('mk-name').value;
+        const val = document.getElementById('mk-val').value;
+        const date = new Date().toISOString().split('T')[0];
+        if(!sub || !name || !val) return;
+        if(editIds.marks) {
+            let idx = db.marks.findIndex(i => i.id === editIds.marks);
+            db.marks[idx] = { id: editIds.marks, sub, name, val: Number(val), date };
+            editIds.marks = null;
+        } else {
+            db.marks.push({ id: Date.now(), sub, name, val: Number(val), date });
+        }
+        document.getElementById('mk-sub').value = ''; document.getElementById('mk-name').value = ''; document.getElementById('mk-val').value = '';
+        saveDB();
+    }
+
+    function saveTT() {
+        const day = document.getElementById('tt-day').value;
+        const time = document.getElementById('tt-time').value;
+        const sub = document.getElementById('tt-sub').value;
+        const date = new Date().toISOString().split('T')[0];
+        if(!day || !time || !sub) return;
+        if(editIds.timetable) {
+            let idx = db.timetable.findIndex(i => i.id === editIds.timetable);
+            db.timetable[idx] = { id: editIds.timetable, day, time, sub, date };
+            editIds.timetable = null;
+        } else {
+            db.timetable.push({ id: Date.now(), day, time, sub, date });
+        }
+        document.getElementById('tt-day').value = ''; document.getElementById('tt-time').value = ''; document.getElementById('tt-sub').value = '';
+        saveDB();
+    }
+
+    function deleteItem(arrayName, id) {
+        if(confirm("Ese urashaka gusiba?")) {
+            db[arrayName] = db[arrayName].filter(item => item.id !== id);
+            saveDB();
+        }
+    }
+
+    function refreshUI() {
+        const totalStd = db.attendance.length;
+        const present = db.attendance.filter(a => a.status === 'Present').length;
+        const absent = db.attendance.filter(a => a.status === 'Absent').length;
+        const avg = db.marks.length > 0 ? (db.marks.reduce((a, b) => a + b.val, 0) / db.marks.length).toFixed(1) : 0;
+        const mods = [...new Set(db.marks.map(m => m.sub))].length;
+
+        document.getElementById('d-total').innerText = totalStd;
+        document.getElementById('d-present').innerText = present;
+        document.getElementById('d-absent').innerText = absent;
+        document.getElementById('d-avg').innerText = avg + "%";
+        document.getElementById('d-mod').innerText = mods;
+
+        document.getElementById('attn-body').innerHTML = db.attendance.map(a => `
+            <tr><td>${a.name}</td><td>${a.gen}</td>
+            <td style="color: ${a.status==='Present'?'green':'red'}; font-weight:bold">${a.status}</td>
+            <td>${a.date}</td>
+            <td>
+                <button class="btn-edit" onclick="editAttendance(${a.id})"><i class="fas fa-edit"></i></button>
+                <button class="btn-del" onclick="deleteItem('attendance', ${a.id})"><i class="fas fa-trash"></i></button>
+            </td></tr>`).join('');
+
+        document.getElementById('marks-body').innerHTML = db.marks.map(m => `
+            <tr><td>${m.sub}</td><td>${m.name}</td><td>${m.val}%</td>
+            <td style="color: ${m.val>=50?'green':'red'}">${m.val>=50?'Pass':'Fail'}</td>
+            <td><button class="btn-del" onclick="deleteItem('marks', ${m.id})"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+
+        const lastAttDate = db.attendance.length > 0 ? db.attendance[db.attendance.length-1].date : "No data";
+        const lastMarkDate = db.marks.length > 0 ? db.marks[db.marks.length-1].date : "No data";
+        const lastTTDate = db.timetable.length > 0 ? db.timetable[db.timetable.length-1].date : "No data";
+
+        document.getElementById('log-body').innerHTML = `
+            <tr><td>Attendance</td><td>${present} Present / ${absent} Absent</td><td>${lastAttDate}</td></tr>
+            <tr><td>Academic</td><td>${db.marks.length} Records</td><td>${lastMarkDate}</td></tr>
+            <tr><td>Schedule</td><td>${db.timetable.length} Sessions</td><td>${lastTTDate}</td></tr>`;
+            
+        document.getElementById('profile-container').innerHTML = `
+            <table><thead><tr><th>Student Name</th><th>Gender</th><th>Status</th></tr></thead>
+            <tbody>${db.attendance.map(s => `<tr><td>${s.name}</td><td>${s.gen}</td><td>Active</td></tr>`).join('')}</tbody></table>`;
+    }
+
+    window.onload = refreshUI;
+</script>
+</body>
+</html>

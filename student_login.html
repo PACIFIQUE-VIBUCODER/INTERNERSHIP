@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Login - Management System</title>
-    
+    <link rel="icon" href="LOGO.png">
     <style>
         *{
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
          html {
-            
-            overflow: hidden; 
+            overflow-x: hidden; 
         }
-        
 
         section {
             display: flex;
+            flex-direction: row;
         }
 
         aside {
@@ -37,9 +37,9 @@
             justify-content: center; 
             align-items: center;    
             color: antiquewhite;
+            text-align: center;
         }
 
-     
         h2 {
             font-size: 5vh;
             margin-bottom: 30px;
@@ -58,11 +58,11 @@
             border: none;
             height: 7vh;
             width: 50vh;
+            max-width: 90%;
             font-weight: bold;
-border-radius: 1vh;
-font-size: 2.5vh;
-
-
+            border-radius: 1vh;
+            font-size: 2.5vh;
+            padding: 0 10px;
         }
 
         input::placeholder {
@@ -73,48 +73,86 @@ font-size: 2.5vh;
             background-color: #bbbb10;
             color: black;
             font-weight: bold;
-            font-family: italic;
-            width: 40%;
+            width: 50vh;
+            max-width: 90%;
             padding: 12px;
             margin: 20px;
-height: 40px;
-border-radius: 1vh;
+            height: auto;
+            border-radius: 1vh;
+            cursor: pointer;
+            border: none;
         }
-        
 
         .explain{
             font-size: 3vh;
-            font-family: serif;color: rgb(193, 170, 140);
+            font-family: serif;
+            color: rgb(193, 170, 140);
+            padding: 0 10px;
         }
      
-.favour{
-    margin-top: 35%;
-color: white;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.8);z-index: 1;
-font-size: 5vh;
-}
+        .favour{
+            margin-top: 35%;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            z-index: 1;
+            font-size: 5vh;
+            padding: 20px;
+        }
+
         .footer-text {
             margin-top: 20px;
             font-size: 14px;
             opacity: 0.7;
         }
-        section{
-            display: flex;
-  flex-direction: row;
-        }
 
+        @media (max-width: 768px) {
+            section {
+                flex-direction: column;
+            }
+            aside, .contain {
+                width: 100%;
+                height: auto;
+                min-height: 50vh;
+            }
+            .favour {
+                margin-top: 10%;
+                font-size: 3.5vh;
+            }
+            input {
+                width: 80vw;
+            }
+            .contain {
+                padding: 40px 0;
+            }
+        }
+        .sign {
+            color: #d4d431;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .sign:hover {
+            text-decoration: none;
+            color: #37ff00;
+        }
+.hom{
+    color: #e5e5e5;
+    text-decoration: none;
+    font-weight: bold;
+}
+.hom:hover{
+    text-decoration: none;
+    color: #37ff00;
+}
     </style>
 </head>
 <body>
 
     <section>
-        <aside > 
-
-            <P class="favour">
-         Welcome Back!  Please Enter Your Unique Student Credentials To
-          Access Your Academic Dashboard, Grades, and Resources.
-
-          </P>
+        <aside> 
+            <p class="favour">
+              Welcome Back! Please Enter Your Unique Student Credentials To
+               Access Your Academic Dashboard, Grades, and Resources.
+            </p>
         </aside>
 
         <div class="contain">
@@ -122,33 +160,36 @@ font-size: 5vh;
                 <p class="explain">Enter Your Credentials To Access The Portal.</p>
 
                 <form>
-                    <div >
+                    <div>
                         <label>Full Name:</label>
-<br><br>
-      <input type="text" class="info" placeholder="Enter your name" required>
-                    </div>
-
-                 <br>  
-                        <label class="form-label">Student Code /ID:</label>
                         <br><br>
+<input type="text" id="studentName" class="info" placeholder="Enter your name" required>                    </div>
 
-                        <input type="text" class="info" placeholder="Enter your 
-code" required>
-                        <br><br>
-<label> Student Password:</label> 
-                        <br><br>
-
-<input type="password" placeholder=" Enter your password" hideorshow password>
-
-                    <button type="submit" class="btnlog">LOGIN TO SYSTEM</button>
+                    <br>  
+                    <label class="form-label">Student Code /ID:</label>
+                    <br><br>
+                    <input type="text" class="info" placeholder="Enter your code" required>
+                    
+                    <br><br>
+                    <label> Student Password:</label> 
+                    <br><br>
+                    <input type="password" placeholder=" Enter your password" required>
+<br>
+                    <button type="button" onclick="goToDashboard()" class="btnlog">LOGIN TO SYSTEM</button>
                     
                     <div class="text-center">
-                        <p class="footer-text">Forget Code? Contact the Registrar.</p>
+                        <p class="footer-text">Forgot Password? <a href="student_signup.html" class="sign">Create an account</a>.</p>
+                  <br>      <p><a href="index.html" class="hom">back to home</a></p>
                     </div>
                 </form>
-            </div>
         </div>
     </section>
+
+<script>
+    function goToDashboard() {
+        window.location.href = 'student_darshboards.html';
+    }
+</script>
 
 </body>
 </html>

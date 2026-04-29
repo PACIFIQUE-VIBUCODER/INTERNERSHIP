@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTEL Student Dashboard</title>
+    <link rel="icon" href="LOGO.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+             margin: 0; padding: 0;
+              box-sizing: border-box;
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+        .hold {
+             display: flex; 
+             width: 100%; 
+             height: 100vh;
+              overflow: hidden; 
+        }
+        
+        aside {
+             width: 25%; height: 100%;
+              background-color: darkgoldenrod;
+               border-top-right-radius: 1vh; 
+               padding: 20px; color: white; 
+               transition: 0.3s;
+     }
+        h1 { 
+            font-size: 3.5vh;
+             margin-bottom: 40px; 
+    }
+        .nav {
+             display: flex; 
+             align-items: center; 
+             padding: 15px;
+              margin-bottom: 10px;
+               cursor: pointer;
+                transition: 0.3s; 
+                border-radius: 10px; 
+                position: relative; 
+    }
+        .nav i { 
+            position: static;
+             margin-right: 15px; 
+             color: white;
+             }
+        .nav:hover {
+             background-color: rgb(75, 32, 0); 
+            }
+        .nav.active {
+             background-color: rgb(75, 32, 0); 
+             border-left: 5px solid white;
+     }
+        hr {
+             border: 0.5px solid rgba(255,255,255,0.3);
+              margin: 20px 0;
+     }
+        .go-out {
+             width: 100%; 
+             padding: 15px;
+              border-radius: 10px;
+               color: #ff4d4d;
+                background-color: rgb(58, 20, 20); 
+                border: 1px solid #444;
+                 cursor: pointer;
+                 font-weight: bold; 
+                 margin-top: 50px;
+                 }
+        .go-out:hover { 
+            background-color: #711f01;
+             color: white;
+             }
+
+        .display {
+             width: 75%;
+              height: 100%;
+               background-color: rgb(137, 132, 132); 
+               overflow-y: auto; 
+               padding: 30px; 
+            }
+        .section-content {
+             display: none;
+         }
+        .section-content.active {
+             display: block;
+     }
+
+        .section-title {
+            
+            color: white;
+             margin-bottom: 20px;
+              font-size: 4vh;
+              
+              text-transform: uppercase; 
+              letter-spacing: 1px;
+         }
+
+        .cards-container {
+             display: flex;
+              gap: 20px;
+               margin-bottom: 40px;
+               flex-wrap: wrap;
+     }
+        .darsh-content {
+             background-color: rgb(7, 69, 69);
+              flex: 1;
+               min-width: 200px;
+               padding: 25px;
+                border-radius: 15px; 
+                text-align: center; 
+                color: cornsilk; 
+                border-bottom: 8px solid #000;
+             }
+        .update { 
+            color: rgb(209, 151, 4);
+             font-size: 3vh;
+              display: block; 
+              margin-top: 10px;
+     }
+        .update-name { 
+            color: rgb(209, 151, 4);
+             font-weight: bold;
+     }
+
+        .data-table-container { 
+            background: rgba(255,255,255,0.1);
+             padding: 20px; 
+             border-radius: 15px;
+              color: white; text-decoration: none;
+               overflow-x: auto;
+    }
+        table {
+             width: 100%;
+              border-collapse: collapse; 
+              margin-top: 15px;
+               min-width: 400px;
+     }
+        th, td { 
+            
+            padding: 12px;
+             text-align: left;
+              border-bottom: 1px solid rgba(255,255,255,0.1);
+     }
+        th { 
+            background-color: rgba(0,0,0,0.2);
+             color: darkgoldenrod; 
+    }
+        .status-badge {
+             padding: 5px 10px;
+              border-radius: 5px;
+              font-size: 0.8em;
+               background: darkgoldenrod;
+               color: white;
+     }
+        #i{ 
+            color:rgb(255, 0, 0);
+             margin-left: 10px; 
+             font-size: 3vh;
+             }
+
+        @media (max-width: 992px) {
+            aside { width: 30%; }
+            .display { width: 70%; }
+        }
+
+        @media (max-width: 768px) {
+            .hold {
+                 flex-direction: column;
+                  overflow-y: auto;
+                 }
+            aside {
+                 width: 100%;
+                  height: auto;
+                   border-radius: 0;
+                    border-bottom-right-radius: 2vh;
+                     border-bottom-left-radius: 2vh;
+                      padding: 15px;
+     }
+            .display { 
+                width: 100%;
+                 height: auto; 
+                 overflow: visible;
+                  padding: 15px; 
+    }
+            h1 {
+                 margin-bottom: 20px; 
+                 text-align: center;
+         }
+            .nav {
+                 padding: 10px; 
+                 font-size: 14px; 
+        }
+            .go-out {
+                 margin-top: 20px;
+         }
+            .section-title {
+                 font-size: 3vh;
+         }
+            .darsh-content {
+                 min-width: 45%;
+                 }
+        }
+
+        @media (max-width: 480px) {
+            .darsh-content { min-width: 100%; } 
+            .nav { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hold">
+        <aside>
+            <h1>INTEL Student</h1>
+            <div class="nav active" onclick="showSection('dashboard')"><i class="fas fa-home"></i> Dashboard</div>
+            <div class="nav" onclick="showSection('results')"><i class="fas fa-graduation-cap"></i> Academic Results</div>
+            <div class="nav" onclick="showSection('timetable')"><i class="fas fa-calendar-day"></i> Timetable</div>
+            <div class="nav" onclick="showSection('notifications')"><i class="fas fa-envelope"></i> Notifications</div>
+            <hr>
+            <p>
+                <a href="index.html" class="back" style="text-decoration: none;">
+                    <button class="go-out" onclick="return confirm('Are you sure you want to logout?')">
+                        LOG OUT <i id="i" class="fas fa-sign-out-alt"></i>
+                    </button>
+                </a>
+            </p>
+        </aside>
+
+        <div class="display">
+            <div id="dashboard" class="section-content active">
+                <h2 class="section-title">General Overview</h2>
+                <div class="cards-container">
+                    <div class="darsh-content"><h3>STUDENT</h3><span class="update-name">AKEZA</span></div>
+                    <div class="darsh-content"><h3>PERFORMANCE</h3><span class="update">85%</span></div>
+                    <div class="darsh-content"><h3>CLASSES TODAY</h3><span class="update">4</span></div>
+                    <div class="darsh-content"><h3>NOTIFICATIONS</h3><span class="update">3</span></div>
+                </div>
+
+                <div class="data-table-container">
+                    <h3>Recent Activity</h3>
+                    <table>
+                        <tr><th>Activity</th><th>Time</th><th>Status</th></tr>
+                        <tr><td>Math Assignment Submitted</td><td>10:30 AM</td><td><span class="status-badge">Done</span></td></tr>
+                        <tr><td>Chemistry Grade Updated</td><td>Yesterday</td><td><span class="status-badge">New</span></td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="results" class="section-content">
+                <h2 class="section-title">Academic Results</h2>
+                <div class="data-table-container">
+                    <h2 style="color: darkgoldenrod;">Term Academic Results</h2>
+                    <table>
+                        <thead>
+                            <tr><th>Subject</th><th>Score</th><th>Grade</th><th>Remark</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Mathematics</td><td>90/100</td><td>A</td><td>Excellent</td></tr>
+                            <tr><td>Computer Science</td><td>88/100</td><td>A</td><td>Very Good</td></tr>
+                            <tr><td>Physics</td><td>75/100</td><td>B</td><td>Good</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="timetable" class="section-content">
+                <h2 class="section-title">Class Timetable</h2>
+                <div class="data-table-container">
+                    <h2 style="color: darkgoldenrod;">Weekly Class Schedule</h2>
+                    <table>
+                        <tr><th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th></tr>
+                        <tr><td>08:00 - 10:00</td><td>Math</td><td>Physics</td><td>English</td></tr>
+                        <tr><td>10:30 - 12:30</td><td>ICT</td><td>Chemistry</td><td>Biology</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="notifications" class="section-content">
+                <h2 class="section-title">Notifications</h2>
+                <div class="data-table-container">
+                    <h2 style="color: darkgoldenrod;">New Updates</h2>
+                    <div style="padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px; margin-top: 10px;">
+                        <p><strong>School Admin:</strong> Kwinjira mu bizamini bizatangira kuwa mbere.</p>
+                        <small>2 hours ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            
+            document.querySelectorAll('.nav').forEach(nav => {
+                nav.classList.remove('active');
+                if(nav.textContent.toLowerCase().includes(sectionId.toLowerCase())) {
+                    nav.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
